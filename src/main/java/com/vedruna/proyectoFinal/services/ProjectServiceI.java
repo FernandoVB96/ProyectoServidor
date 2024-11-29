@@ -10,7 +10,7 @@ import com.vedruna.proyectoFinal.persistance.model.Project;
 public interface ProjectServiceI {
 
     Page<ProjectDTO> showAllProjects(int page, int size); 
-    ProjectDTO showProjectByName(String name);
+    List<ProjectDTO> showProjectByName(String name);
     void saveProject(Project project);
     boolean deleteProject(Integer id);
     boolean moveProjectToTesting(Integer id);
