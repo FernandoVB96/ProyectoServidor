@@ -1,7 +1,10 @@
 package com.vedruna.proyectoFinal.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,20 +35,25 @@ public class ProjectServiceImpl implements ProjectServiceI {
 
     // Método para obtener un proyecto por su nombre.
     @Override
-    public ProjectDTO showProjectByName(String name) {
-        List<Project> projects = projectRepository.findAll(); // Obtiene todos los proyectos.
-        Project project = null;
-        for (Project p : projects) {
-            if (p.getName().contains(name)) { // Compara el nombre de cada proyecto con el nombre dado.
-                project = p;
-                break;
-            }
+    public List<ProjectDTO> showProjectByName(String name) {
+    List<Project> projects = projectRepository.findAll(); // Obtener todos los proyectos.
+    List<Project> matchingProjects = new ArrayList<>(); // Lista para almacenar los proyectos que coinciden con la cadena.
+
+    for (Project project : projects) {
+        if (project.getName().contains(name)) { // Comprobar si el nombre contiene la cadena.
+            matchingProjects.add(project); // Si coincide, agregarlo a la lista.
         }
-        if (project == null) {
-            throw new IllegalArgumentException("No project found with name containing: " + name); // Lanza excepción si no se encuentra el proyecto.
-        }
-        return new ProjectDTO(project); // Devuelve el proyecto en formato DTO.
     }
+
+    if (matchingProjects.isEmpty()) {
+        throw new IllegalArgumentException("No projects found with name containing: " + name); // Excepción si no se encuentra ningún proyecto.
+    }
+
+    return matchingProjects.stream()
+                           .map(ProjectDTO::new) // Convertir cada proyecto a un DTO.
+                           .collect(Collectors.toList()); // Devolver la lista de proyectos en formato DTO.
+}
+
 
     // Método para guardar un proyecto en la base de datos.
     @Override

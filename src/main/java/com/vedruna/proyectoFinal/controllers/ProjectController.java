@@ -35,11 +35,11 @@ public class ProjectController {
     
     // Endpoint para obtener un proyecto por su nombre
     @GetMapping("/projects/{name}")
-    public ResponseEntity<ResponseDTO<ProjectDTO>> showProjectByName(@PathVariable String name) {
-        ProjectDTO project = projectService.showProjectByName(name);
-        ResponseDTO<ProjectDTO> response = new ResponseDTO<>("Project found successfully", project);
-        return ResponseEntity.ok(response);
-    }
+    public ResponseEntity<ResponseDTO<List<ProjectDTO>>> showProjectByName(@PathVariable String name) {
+    List<ProjectDTO> projects = projectService.showProjectByName(name); // Llamar al servicio para obtener los proyectos.
+    ResponseDTO<List<ProjectDTO>> response = new ResponseDTO<>("Projects found successfully", projects);
+    return ResponseEntity.ok(response);
+}
 
     // Endpoint para crear un nuevo proyecto, con validación de fecha y estado
     @PostMapping("/projects")
