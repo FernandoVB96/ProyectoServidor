@@ -142,7 +142,7 @@ public class ProjectServiceImpl implements ProjectServiceI {
 
     // Método para obtener proyectos asociados con una tecnología específica.
     @Override
-    public List<Project> getProjectsByTechnology(String techName) {
+    public List<ProjectDTO> getProjectsByTechnology(String techName) {
         return projectRepository.findProjectsByTechnology(techName); // Obtiene los proyectos asociados a la tecnología.
     }
 }
