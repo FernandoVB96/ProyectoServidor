@@ -12,6 +12,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object (DTO) que representa un proyecto con sus detalles,
+ * incluyendo tecnologías y desarrolladores asociados.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,10 +29,15 @@ public class ProjectDTO {
     private String repository_url;
     private String demo_url;
     private String picture;
-    private String statusProjectName; // Cambiado a String para almacenar el nombre
+    private String statusProjectName;
     private List<TechnologyDTO> technologies;
     private List<DeveloperDTO> developers;
 
+    /**
+     * Constructor que crea un ProjectDTO a partir de un objeto Project.
+     * 
+     * @param p el objeto Project que se convertirá a ProjectDTO
+     */
     public ProjectDTO(Project p) {
         this.id = p.getId();
         this.name = p.getName();
@@ -38,38 +47,37 @@ public class ProjectDTO {
         this.repository_url = p.getRepository_url();
         this.demo_url = p.getDemo_url();
         this.picture = p.getPicture();
-        this.statusProjectName = p.getStatusProject() != null ? p.getStatusProject().getName() : null; // Obtener el nombre del estado
-        this.technologies = technologiesDTO(p.getTechnologies());
-        this.developers = developersDTO(p.getDevelopers());
+        this.statusProjectName = p.getStatusProject() != null ? p.getStatusProject().getName() : null;
+        this.technologies = convertTechnologiesToDTO(p.getTechnologies());
+        this.developers = convertDevelopersToDTO(p.getDevelopers());
     }
 
     /**
-     * Converts a list of Technology objects to a list of TechnologyDTO objects.
+     * Convierte una lista de objetos Technology en una lista de objetos TechnologyDTO.
      *
-     * @param technologies the list of Technology objects to be converted
-     * @return a list of TechnologyDTO objects
+     * @param technologies la lista de objetos Technology que se va a convertir
+     * @return una lista de objetos TechnologyDTO
      */
-    public List<TechnologyDTO> technologiesDTO(List<Technology> technologies) {
-        List<TechnologyDTO> technologiesRegistered = new ArrayList<>();
+    public List<TechnologyDTO> convertTechnologiesToDTO(List<Technology> technologies) {
+        List<TechnologyDTO> technologyDTOList = new ArrayList<>();
         for (Technology t : technologies) {
-            technologiesRegistered.add(new TechnologyDTO(t));
+            technologyDTOList.add(new TechnologyDTO(t));
         }
-        return technologiesRegistered;
+        return technologyDTOList;
     }
 
     /**
-
-     * Converts a list of Developer objects to a list of DeveloperDTO objects,
-     * to be serialized to JSON.
+     * Convierte una lista de objetos Developer en una lista de objetos DeveloperDTO,
+     * listos para ser serializados en formato JSON.
      * 
-     * @param developers list of Developer objects to convert
-     * @return list of DeveloperDTO objects, ready to be serialized to DeveloperDTO
+     * @param developers la lista de objetos Developer que se convertirá
+     * @return una lista de objetos DeveloperDTO
      */
-    public List<DeveloperDTO> developersDTO(List<Developer> developers) {
-        List<DeveloperDTO> developersRegistered = new ArrayList<>();
+    public List<DeveloperDTO> convertDevelopersToDTO(List<Developer> developers) {
+        List<DeveloperDTO> developerDTOList = new ArrayList<>();
         for (Developer d : developers) {
-            developersRegistered.add(new DeveloperDTO(d));
+            developerDTOList.add(new DeveloperDTO(d));
         }
-        return developersRegistered;
+        return developerDTOList;
     }
 }

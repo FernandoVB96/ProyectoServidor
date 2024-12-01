@@ -3,6 +3,7 @@ package com.vedruna.proyectoFinal.validation;
 // Importaciones necesarias para la validación y el uso de expresiones regulares.
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+
 import java.util.regex.Pattern;
 
 public class UrlValidator implements ConstraintValidator<ValidUrl, String> {
