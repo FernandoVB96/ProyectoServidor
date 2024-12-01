@@ -22,9 +22,14 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Clase que representa un proyecto en la base de datos.
+ * Esta clase mapea la entidad "projects" en la base de datos.
+ */
 @NoArgsConstructor
 @Data
 @Entity
@@ -37,27 +42,27 @@ public class Project implements Serializable {
     private int id;
 
     @Column(name="project_name")
-    @NotNull(message = "Name cannot be null")
-    @NotBlank(message = "Name cannot be empty")
+    @NotNull(message = "El nombre no puede ser nulo.")
+    @NotBlank(message = "El nombre no puede estar vacío.")
     private String name;
 
     @Column(name="description")
-    @Size(min = 2, max = 50, message = "Description must be between 2 and 50 characters")
+    @Size(min = 2, max = 50, message = "La descripción debe tener entre 2 y 50 caracteres.")
     private String description;
-    
+
     @Column(name="start_date")
-    @FutureOrPresent(message = "The start date cannot be before today")
+    @FutureOrPresent(message = "La fecha de inicio no puede ser anterior a la fecha actual.")
     private Date start_date;
 
     @Column(name="end_date")
     private Date end_date;
 
     @Column(name="repository_url")
-    @ValidUrl(message = "Invalid URL format")
+    @ValidUrl(message = "Formato de URL inválido.")
     private String repository_url;
 
     @Column(name="demo_url")
-    @ValidUrl(message = "Invalid URL format")
+    @ValidUrl(message = "Formato de URL inválido.")
     private String demo_url;
 
     @Column(name="picture")
@@ -72,5 +77,4 @@ public class Project implements Serializable {
 
     @ManyToMany(cascade = {CascadeType.ALL}, mappedBy="projectsDevelopers")
     private List<Developer> developers = new ArrayList<>();
-
 }

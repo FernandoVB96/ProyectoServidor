@@ -4,12 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.vedruna.proyectoFinal.dto.DeveloperDTO;
 import com.vedruna.proyectoFinal.dto.ResponseDTO;
 import com.vedruna.proyectoFinal.persistance.model.Developer;
 import com.vedruna.proyectoFinal.persistance.model.Project;
 import com.vedruna.proyectoFinal.services.DeveloperServiceI;
 import com.vedruna.proyectoFinal.services.ProjectServiceI;
 
+/**
+ * Controlador para manejar las operaciones relacionadas con los desarrolladores.
+ */
 @RestController
 @RequestMapping("/api/v1")
 @CrossOrigin
@@ -21,58 +26,70 @@ public class DeveloperController {
     @Autowired
     private ProjectServiceI projectService;
 
+    /**
+     * Método para crear un nuevo desarrollador.
+     * 
+     * @param developerDTO el objeto Developer a ser guardado
+     * @return ResponseEntity con el mensaje de éxito y estado HTTP 201
+     */
     @PostMapping("/developers")
-    public ResponseEntity<ResponseDTO<String>> postDeveloper(@RequestBody Developer developer) {
-        // Guarda el nuevo desarrollador en la base de datos
-        developerService.saveDeveloper(developer);
-        ResponseDTO<String> response = new ResponseDTO<>("Developer created successfully", null);
-        // Devuelve la respuesta con un estado HTTP 201 (Created)
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(response);
-    }
+    public ResponseEntity<ResponseDTO<String>> postDeveloper(@RequestBody DeveloperDTO developerDTO) {
+    Developer developer = new Developer();
+    developer.setName(developerDTO.getName());
+    developer.setSurname(developerDTO.getSurname());
+    developer.setEmail(developerDTO.getEmail());
+    developer.setLinkedin_url(developerDTO.getLinkedin_url());
+    developer.setGithub_url(developerDTO.getGithub_url());
 
+    developerService.saveDeveloper(developer);
+    ResponseDTO<String> response = new ResponseDTO<>("Desarrollador creado con éxito", null);
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
+}
+
+    /**
+     * Método para eliminar un desarrollador por su ID.
+     * 
+     * @param id el ID del desarrollador a eliminar
+     * @return ResponseEntity con el mensaje de éxito y estado HTTP 200
+     * @throws IllegalArgumentException si el desarrollador no existe
+     */
     @DeleteMapping("/developers/{id}")
     public ResponseEntity<ResponseDTO<String>> deleteDeveloper(@PathVariable Integer id) {
-        // Intenta eliminar el desarrollador por ID
         boolean developerDeleted = developerService.deleteDeveloper(id);
         if (!developerDeleted) {
-            // Si no se encuentra el desarrollador, lanza una excepción
-            throw new IllegalArgumentException("There isn't a developer with the ID: " + id);
+            throw new IllegalArgumentException("No existe un desarrollador con el ID: " + id);
         }
-        ResponseDTO<String> response = new ResponseDTO<>("Developer successfully removed", null);
-        // Devuelve la respuesta con un estado HTTP 200 (OK)
+        ResponseDTO<String> response = new ResponseDTO<>("Desarrollador eliminado con éxito", null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    /**
+     * Método para asignar un desarrollador a un proyecto.
+     * 
+     * @param developerId el ID del desarrollador a añadir
+     * @param projectId el ID del proyecto al que se agregará el desarrollador
+     * @return ResponseEntity con el mensaje de éxito o error según corresponda
+     */
     @PostMapping("/developers/worked/{developerId}/{projectId}")
-    public ResponseEntity<?> addDeveloperToProject(@PathVariable int developerId, @PathVariable int projectId) {
-        // Busca al desarrollador por su ID
+    public ResponseEntity<ResponseDTO<String>> addDeveloperToProject(@PathVariable int developerId, @PathVariable int projectId) {
         Developer developer = developerService.findById(developerId);
-        // Busca el proyecto por su ID
         Project project = projectService.findById(projectId);
         
         if (developer == null) {
-            // Si no se encuentra al desarrollador, devuelve un error 400
-            return ResponseEntity.badRequest().body("Developer not found");
+            return ResponseEntity.badRequest().body(new ResponseDTO<>("Desarrollador no encontrado", null));
         }
         
         if (project == null) {
-            // Si no se encuentra el proyecto, devuelve un error 400
-            return ResponseEntity.badRequest().body("Project not found");
+            return ResponseEntity.badRequest().body(new ResponseDTO<>("Proyecto no encontrado", null));
         }
-
-        // Si el proyecto no tiene al desarrollador, lo agrega
+    
         if (!project.getDevelopers().contains(developer)) {
             project.getDevelopers().add(developer);
             developer.getProjectsDevelopers().add(project);
-            // Guarda el proyecto con el desarrollador añadido
             projectService.saveProject(project);
-            // Guarda al desarrollador con el proyecto asignado
             developerService.saveDeveloper(developer);  
         }
     
-        // Devuelve un mensaje de éxito
-        return ResponseEntity.ok("Developer added to project");
+        return ResponseEntity.ok(new ResponseDTO<>("Desarrollador añadido al proyecto", null));
     }
 }

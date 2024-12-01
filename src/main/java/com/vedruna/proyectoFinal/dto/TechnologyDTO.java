@@ -6,9 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO (Data Transfer Object) para representar una tecnología.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class TechnologyDTO{
 
 

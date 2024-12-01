@@ -13,9 +13,14 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Clase que representa una tecnología utilizada en los proyectos.
+ * Esta clase mapea la entidad "technologies" en la base de datos.
+ */
 @NoArgsConstructor
 @Data
 @Entity
@@ -24,7 +29,7 @@ public class Technology implements Serializable {
 
     @Id
     @Column(name="tech_id")
-    @NotNull(message = "Id cannot be null")
+    @NotNull(message = "El ID no puede ser nulo.")
     private int id;
 
     @Column(name="tech_name")
@@ -33,9 +38,4 @@ public class Technology implements Serializable {
     @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(name="technologies_used_in_projects", joinColumns={@JoinColumn(name="technologies_tech_id")}, inverseJoinColumns={@JoinColumn(name="projects_project_id")})
     private List<Project> projectsTechnologies = new ArrayList<>();
-
-
-
-
-    
 }
