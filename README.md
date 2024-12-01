@@ -1,70 +1,87 @@
-# Proyecto Servidor , Fernando Vaquero Buzon
+# API REST para Gestión de Proyectos, Desarrolladores y Tecnologías
 
-Este proyecto consiste en una API REST para gestionar información de proyectos, desarrolladores y tecnologías. Fue desarrollado en Java utilizando Spring Boot y sigue el patrón Modelo-Vista-Controlador (MVC), usando también Git como sistema de control de versiones.
+**Desarrollado por:** Fernando Vaquero Buzón
+
+Este proyecto consiste en una API REST creada para gestionar información relacionada con proyectos, desarrolladores y tecnologías. Fue desarrollado utilizando **Spring Boot** y sigue el patrón **Modelo-Vista-Controlador (MVC)**. Además, el proyecto está gestionado mediante **Git** como sistema de control de versiones.
 
 ## Índice
-- [Introducción](#Introducción)
-- [Tecnologías](#Tecnologías)
-- [Instalación y Configuración](#Instalación-y-Configuración)
-- [Conclusión](#Conclusión)
-- [Contribuciones](#Contribuciones)
-- [Licensias](#Licensias)
-- [Contacto](#Contacto)
-
-
----
-
-## Introducción
-
-La API permite a los usuarios:
-- Gestionar proyectos, desarrolladores y tecnologías en una base de datos.
-- Realizar operaciones CRUD sobre las diferentes tablas.
-- Filtrar proyectos por nombre o tecnología.
-- Cambiar el estado de un proyecto de **"Development"** a **"Testing"** y de **"Testing"** a **"Production"**.
-
-Este proyecto fue desarrollado como parte de la evaluación de un módulo de servidor y cumple con criterios como paginación en las consultas y manejo de errores con `ResponseEntity`.
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Instrucciones de Instalación y Configuración](#instrucciones-de-instalación-y-configuración)
+- [Conclusiones](#conclusiones)
+- [Agradecimientos y Contribuciones](#agradecimientos-y-contribuciones)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
 
 ---
 
-## Tecnologías
+## Descripción del Proyecto
 
-Para ejecutar la aplicación, se necesitan las siguientes herramientas:
+La API permite gestionar proyectos, desarrolladores y tecnologías, facilitando la ejecución de operaciones CRUD en las tablas correspondientes. Permite a los usuarios:
+- Crear, leer, actualizar y eliminar proyectos, desarrolladores y tecnologías.
+- Filtrar proyectos según el nombre o la tecnología asociada.
+- Modificar el estado de los proyectos (de **"Desarrollo"** a **"Pruebas"**, y de **"Pruebas"** a **"Producción"**).
+
+Este proyecto ha sido desarrollado como parte de un módulo de servidor, con énfasis en el uso de paginación en las consultas y un manejo adecuado de errores utilizando `ResponseEntity`.
+
+---
+
+## Tecnologías Utilizadas
+
+Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnologías:
+
 - **Java 17**
-- **SpringBoot**
-- **Maven**
-- **MySQL** (u otra base de datos compatible)
-- **Thunder Client**
-- **Git** para el control de versiones
+- **Spring Boot**
+- **Maven** (como gestor de dependencias y construcción)
+- **MySQL** (o cualquier otra base de datos compatible con JPA)
+- **Thunder Client** (para realizar pruebas de la API)
+- **Git** (para la gestión de versiones)
 
 ---
 
+## Instrucciones de Instalación y Configuración
 
-## Instalación y Configuración
-- Creamos el proyecto a través del Spring Initializr
-- Modelamos
-- Creamos controladores para nuestros endpoints
-- Creamos los servicios para la implementación de los métodos
-- Creamos nuestro repositorio git y lo enlazamos a nuestro proyecto Spring
+1. **Crear el Proyecto en Spring Boot**  
+   Utiliza el [Spring Initializr](https://start.spring.io/) para generar un proyecto base con las dependencias necesarias.
+
+2. **Modelado de la Base de Datos**  
+   Define las entidades correspondientes para proyectos, desarrolladores y tecnologías utilizando JPA.
+
+3. **Creación de Controladores**  
+   Desarrolla los controladores que manejarán las solicitudes HTTP hacia los distintos endpoints de la API.
+
+4. **Implementación de los Servicios**  
+   Los servicios deben contener la lógica de negocio para las operaciones CRUD y de filtrado.
+
+5. **Repositorio Git**  
+   Crea el repositorio en **GitHub** y vincúlalo a tu proyecto de Spring Boot para el control de versiones.
 
 ---
 
-## Conclusión
-Mi proyecto en Spring Boot demuestra una sólida implementación de una API REST para la gestión de proyectos, desarrolladores y tecnologías, utilizando el patrón JPA y paginación. He integrado buenas prácticas como validaciones, manejo de errores, y documentación con Swagger. Además, la gestión de estados y relaciones entre entidades muestra un diseño eficiente y escalable. En resumen, el proyecto cumple con los requisitos técnicos y demuestra una comprensión profunda del desarrollo de APIs robustas y bien estructuradas
+## Conclusiones
+
+Este proyecto demuestra la implementación de una API REST sólida para gestionar información de proyectos, desarrolladores y tecnologías. Utiliza **Spring Boot** con JPA para manejar las entidades y la base de datos, e incluye paginación y manejo de errores para garantizar una experiencia robusta y escalable. Además, el proyecto implementa buenas prácticas como validaciones de datos y documentación con Swagger. La correcta gestión de estados y relaciones entre las entidades garantiza un diseño eficiente.
 
 ---
 
-## Contribuciones
-Agradecimientos especiales a:  
-- **Joaquín Borrego Fernández**  por su guía en este proyecto.  
-- Compañeros de clase, por su apoyo y feedback constructivo. 
+## Agradecimientos y Contribuciones
+
+Agradecimientos especiales a:
+
+- **Joaquín Borrego Fernández**, por su valiosa orientación durante el desarrollo de este proyecto.
+- Compañeros de clase, por sus comentarios constructivos y apoyo continuo.
+
 ---
 
-## Licencias
-El proyecto se distribuye bajo una licencia de código abierto, Apache 2.0, lo que permite a otros usar, modificar y distribuir el código de manera libre, siempre que respeten los términos establecidos, como la atribución adecuada. La elección de la licencia dependerá de cómo quieras que otros interactúen con el proyecto y de si deseas imponer restricciones en el uso comercial o en la redistribución.
+## Licencia
+
+Este proyecto se distribuye bajo la **licencia Apache 2.0**, permitiendo a otros usuarios usar, modificar y distribuir el código, siempre y cuando sigan los términos de la licencia, incluyendo la atribución adecuada y el cumplimiento de las restricciones relacionadas con el uso comercial o la redistribución.
 
 ---
 
 ## Contacto
-Para más detalles o consultas:  
-- **Correo:** fernandovaquero96@gmail.com  
-- **GitHub:** [Mi perfil de GitHub](https://github.com/FernandoVB96)  
+
+Para cualquier consulta o más información:
+
+- **Correo Electrónico:** fernandovaquero96@gmail.com  
+- **GitHub:** [Perfil en GitHub](https://github.com/FernandoVB96)
