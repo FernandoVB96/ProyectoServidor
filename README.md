@@ -10,7 +10,6 @@ Este proyecto consiste en una API REST creada para gestionar información relaci
 - [Instrucciones de Instalación y Configuración](#instrucciones-de-instalación-y-configuración)
 - [Conclusiones](#conclusiones)
 - [Agradecimientos y Contribuciones](#agradecimientos-y-contribuciones)
-- [Licencia](#licencia)
 - [Contacto](#contacto)
 
 ---
@@ -60,29 +59,30 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
 
 ### Ejemplo de Peticiones
 
-1. **Get**
-   Proyectos paginados: http://localhost:8080/api/v1/projects?page=0&size=10
-   Proyectos que contengan la cadena: http://localhost:8080/api/v1/projects/{cadena}
-   Proyectos por tecnologias: http://localhost:8080/api/v1/projects/tec/{tech}
+1. **Get**  
+   Proyectos paginados: http://localhost:8080/api/v1/projects?page=0&size=10  
+   Proyectos que contengan la cadena: http://localhost:8080/api/v1/projects/{cadena}  
+   Proyectos por tecnologias: http://localhost:8080/api/v1/projects/tec/{tech}  
    
-2. **DEL**
-   Borrar proyecto: http://localhost:8080/api/v1/projects/{id}
-   Borrar desarrollador: http://localhost:8080/api/v1/developers/{id}
-   Borrar tecnologia: http://localhost:8080/api/v1/technologies/{id}
+2. **DEL**  
+   Borrar proyecto: http://localhost:8080/api/v1/projects/{id}  
+   Borrar desarrollador: http://localhost:8080/api/v1/developers/{id}  
+   Borrar tecnologia: http://localhost:8080/api/v1/technologies/{id}  
 
-3. **PUT**
-   Editar proyecto: http://localhost:8080/api/v1/projects/{id}
+3. **PUT**  
+   Editar proyecto: http://localhost:8080/api/v1/projects/{id}  
    ```json
    {
-  "name": "Twitta",
-  "start_date": "2024-11-26T00:00:00",
-  "description": "A simplified version of Twitter",
-  "repository_url": "https://github.com/FernandoVB96/ejercicioTwitta.git",
-  "picture": "https://i.ibb.co/YBBKgnS/logotwitta.png"
+     "name": "Twitta",
+     "start_date": "2024-11-26T00:00:00",
+     "description": "A simplified version of Twitter",
+     "repository_url": "https://github.com/FernandoVB96/ejercicioTwitta.git",
+     "picture": "https://i.ibb.co/YBBKgnS/logotwitta.png"
    }
+    ```
    
-4. **POST**
-   Crear proyecto: http://localhost:8080/api/v1/projects
+4. **POST**  
+   Crear proyecto: http://localhost:8080/api/v1/projects  
       ```json
       {
      "name": "New Project11",
@@ -91,7 +91,7 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
      "statusProjectName": "Canceled"
       }
    ```
-   Crear desarrollador: http://localhost:8080/api/v1/developers
+   Crear desarrollador: http://localhost:8080/api/v1/developers  
       ```json
       {
        "name": "Juanito",
@@ -108,12 +108,12 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
      "description": "Php description"
    }
    ```
-   Asociar tech a un proyecto: http://localhost:8080/api/v1/technologies/used/{projectId}/{techId}
-   Asociar dev a un proyecto: http://localhost:8080/api/v1/developers/worked/{devId}/{projectId}
+   Asociar tech a un proyecto: http://localhost:8080/api/v1/technologies/used/{projectId}/{techId}  
+   Asociar dev a un proyecto: http://localhost:8080/api/v1/developers/worked/{devId}/{projectId}  
 
-5. **PATCH**
-   Mover proyecto a testing: http://localhost:8080/api/v1/projects/totesting/{id}
-   Mover proyecto a produccion: http://localhost:8080/api/v1/projects/toprod/{id}
+5. **PATCH**  
+   Mover proyecto a testing: http://localhost:8080/api/v1/projects/totesting/{id}  
+   Mover proyecto a produccion: http://localhost:8080/api/v1/projects/toprod/{id}  
    
 ## Conclusiones
 
