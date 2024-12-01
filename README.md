@@ -73,11 +73,6 @@ Agradecimientos especiales a:
 
 ---
 
-## Licencia
-
-Este proyecto se distribuye bajo la **licencia Apache 2.0**, permitiendo a otros usuarios usar, modificar y distribuir el código, siempre y cuando sigan los términos de la licencia, incluyendo la atribución adecuada y el cumplimiento de las restricciones relacionadas con el uso comercial o la redistribución.
-
----
 
 ## Contacto
 
