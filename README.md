@@ -60,17 +60,17 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
 ### Ejemplo de Peticiones
 
 1. **Get**  
-   Proyectos paginados: http://localhost:8080/api/v1/projects?page=0&size=10  
-   Proyectos que contengan la cadena: http://localhost:8080/api/v1/projects/{cadena}  
-   Proyectos por tecnologias: http://localhost:8080/api/v1/projects/tec/{tech}  
+   - Proyectos paginados: http://localhost:8080/api/v1/projects?page=0&size=10  
+   - Proyectos que contengan la cadena: http://localhost:8080/api/v1/projects/{cadena}  
+   - Proyectos por tecnologias: http://localhost:8080/api/v1/projects/tec/{tech}  
    
 2. **DEL**  
-   Borrar proyecto: http://localhost:8080/api/v1/projects/{id}  
-   Borrar desarrollador: http://localhost:8080/api/v1/developers/{id}  
-   Borrar tecnologia: http://localhost:8080/api/v1/technologies/{id}  
+   - Borrar proyecto: http://localhost:8080/api/v1/projects/{id}  
+   - Borrar desarrollador: http://localhost:8080/api/v1/developers/{id}  
+   - Borrar tecnologia: http://localhost:8080/api/v1/technologies/{id}  
 
 3. **PUT**  
-   Editar proyecto: http://localhost:8080/api/v1/projects/{id}  
+   - Editar proyecto: http://localhost:8080/api/v1/projects/{id}  
    ```json
    {
      "name": "Twitta",
@@ -82,8 +82,8 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
     ```
    
 4. **POST**  
-   Crear proyecto: http://localhost:8080/api/v1/projects  
-      ```json
+   - Crear proyecto: http://localhost:8080/api/v1/projects  
+   ```json
       {
      "name": "New Project11",
      "start_date": "2024-11-02",
@@ -91,8 +91,8 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
      "statusProjectName": "Canceled"
       }
    ```
-   Crear desarrollador: http://localhost:8080/api/v1/developers  
-      ```json
+   - Crear desarrollador: http://localhost:8080/api/v1/developers  
+   ```json
       {
        "name": "Juanito",
        "surname": "Pérez",
@@ -100,20 +100,20 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
        "linkedin_url": "https://www.linkedin.com/in/juaniperez34",
        "github_url": "https://github.com/juaniperez34"
       }
-      ```
-   Crear tecnologia: http://localhost:8080/api/v1/technologies
+   ```
+   - Crear tecnologia: http://localhost:8080/api/v1/technologies
    ```json
    {
      "name": "PHP",
      "description": "Php description"
    }
    ```
-   Asociar tech a un proyecto: http://localhost:8080/api/v1/technologies/used/{projectId}/{techId}  
-   Asociar dev a un proyecto: http://localhost:8080/api/v1/developers/worked/{devId}/{projectId}  
+   - Asociar tech a un proyecto: http://localhost:8080/api/v1/technologies/used/{projectId}/{techId}  
+   - Asociar dev a un proyecto: http://localhost:8080/api/v1/developers/worked/{devId}/{projectId}  
 
 5. **PATCH**  
-   Mover proyecto a testing: http://localhost:8080/api/v1/projects/totesting/{id}  
-   Mover proyecto a produccion: http://localhost:8080/api/v1/projects/toprod/{id}  
+   - Mover proyecto a testing: http://localhost:8080/api/v1/projects/totesting/{id}  
+   - Mover proyecto a produccion: http://localhost:8080/api/v1/projects/toprod/{id}  
    
 ## Conclusiones
 
