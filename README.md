@@ -58,6 +58,63 @@ Para ejecutar este proyecto, se necesitan las siguientes herramientas y tecnolog
 
 ---
 
+### Ejemplo de Peticiones
+
+1. **Get**
+   Proyectos paginados: http://localhost:8080/api/v1/projects?page=0&size=10
+   Proyectos que contengan la cadena: http://localhost:8080/api/v1/projects/{cadena}
+   Proyectos por tecnologias: http://localhost:8080/api/v1/projects/tec/{tech}
+   
+2. **DEL**
+   Borrar proyecto: http://localhost:8080/api/v1/projects/{id}
+   Borrar desarrollador: http://localhost:8080/api/v1/developers/{id}
+   Borrar tecnologia: http://localhost:8080/api/v1/technologies/{id}
+
+3. **PUT**
+   Editar proyecto: http://localhost:8080/api/v1/projects/{id}
+   ```json
+   {
+  "name": "Twitta",
+  "start_date": "2024-11-26T00:00:00",
+  "description": "A simplified version of Twitter",
+  "repository_url": "https://github.com/FernandoVB96/ejercicioTwitta.git",
+  "picture": "https://i.ibb.co/YBBKgnS/logotwitta.png"
+   }
+   
+4. **POST**
+   Crear proyecto: http://localhost:8080/api/v1/projects
+      ```json
+      {
+     "name": "New Project11",
+     "start_date": "2024-11-02",
+     "description": "This is a new project.",
+     "statusProjectName": "Canceled"
+      }
+   ```
+   Crear desarrollador: http://localhost:8080/api/v1/developers
+      ```json
+      {
+       "name": "Juanito",
+       "surname": "Pérez",
+       "email": "juani.perez34@example.com",
+       "linkedin_url": "https://www.linkedin.com/in/juaniperez34",
+       "github_url": "https://github.com/juaniperez34"
+      }
+      ```
+   Crear tecnologia: http://localhost:8080/api/v1/technologies
+   ```json
+   {
+     "name": "PHP",
+     "description": "Php description"
+   }
+   ```
+   Asociar tech a un proyecto: http://localhost:8080/api/v1/technologies/used/{projectId}/{techId}
+   Asociar dev a un proyecto: http://localhost:8080/api/v1/developers/worked/{devId}/{projectId}
+
+5. **PATCH**
+   Mover proyecto a testing: http://localhost:8080/api/v1/projects/totesting/{id}
+   Mover proyecto a produccion: http://localhost:8080/api/v1/projects/toprod/{id}
+   
 ## Conclusiones
 
 Este proyecto demuestra la implementación de una API REST sólida para gestionar información de proyectos, desarrolladores y tecnologías. Utiliza **Spring Boot** con JPA para manejar las entidades y la base de datos, e incluye paginación y manejo de errores para garantizar una experiencia robusta y escalable. Además, el proyecto implementa buenas prácticas como validaciones de datos y documentación con Swagger. La correcta gestión de estados y relaciones entre las entidades garantiza un diseño eficiente.
